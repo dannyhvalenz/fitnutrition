@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getPacienteByID" resultType="pojos.Paciente" 
             parameterType="int">
         SELECT
-        *
+        idPaciente,peso, estatura, idMedico, nombre, apellidos, talla, genero, email, telefono, domicilio, usuario, contrasena, status, fecha_nacimiento
         FROM pacientes
         WHERE idPaciente = #{idPaciente}
     </select>
