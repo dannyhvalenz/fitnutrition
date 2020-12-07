@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="234.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="158.0" prefWidth="234.0" style="-fx-background-color: #282c36;">
+         <children>
+            <Label layoutX="14.0" layoutY="127.0" text="Creador" textFill="#93c738">
+               <font>
+                  <Font name="Futura Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="78.0" layoutY="127.0" text="Daniela Hernandez V." textFill="WHITE">
+               <font>
+                  <Font name="Futura Medium" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="12.0" layoutY="109.0" text="Materia" textFill="#fca500">
+               <font>
+                  <Font name="Futura Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="76.0" layoutY="109.0" text="Principios de construccion" textFill="WHITE">
+               <font>
+                  <Font name="Futura Medium" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="62.0" text="de clases" textFill="WHITE">
+               <font>
+                  <Font name="Futura Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="105.0" layoutY="25.0" text="Horario" textFill="WHITE">
+               <font>
+                  <Font name="Futura Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="92.0" fitWidth="94.0" layoutX="5.0" layoutY="16.0">
+               <image>
+                  <Image url="@../resources/Schedule.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <JFXButton alignment="TOP_LEFT" prefHeight="34.0" prefWidth="234.0" text="Horario">
+         <font>
+            <Font name="Futura Medium" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0">
+               <image>
+                  <Image url="@../resources/IC%20Event%20Note%2048px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton alignment="TOP_LEFT" layoutX="10.0" layoutY="168.0" prefHeight="34.0" prefWidth="234.0" text="Experiencias Educativas">
+         <font>
+            <Font name="Futura Medium" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="24.0">
+               <image>
+                  <Image url="@../resources/IC%20School%2048px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</FlowPane>
