@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MAMP
+ Source Server         : MySQL
  Source Server Type    : MySQL
- Source Server Version : 50726
+ Source Server Version : 50731
  Source Host           : localhost:3306
  Source Schema         : fitnutrition
 
  Target Server Type    : MySQL
- Target Server Version : 50726
+ Target Server Version : 50731
  File Encoding         : 65001
 
- Date: 05/12/2020 19:01:54
+ Date: 09/12/2020 00:13:31
 */
 
 SET NAMES utf8mb4;
@@ -66,9 +66,9 @@ CREATE TABLE `consultas` (
   `idConsulta` int(255) NOT NULL,
   `idPaciente` int(255) DEFAULT NULL,
   `observaciones` varchar(255) DEFAULT NULL,
-  `peso` float(5) DEFAULT NULL,
-  `talla` float(3) DEFAULT NULL,
-  `IMC` float(3) DEFAULT NULL,
+  `peso` float DEFAULT NULL,
+  `talla` float DEFAULT NULL,
+  `IMC` float DEFAULT NULL,
   `idDieta` int(11) DEFAULT NULL,
   PRIMARY KEY (`idConsulta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -89,7 +89,7 @@ CREATE TABLE `dietas` (
   `alimento` varchar(255) DEFAULT NULL,
   `cantidad` varchar(255) DEFAULT NULL,
   `horaDia` varchar(255) DEFAULT NULL,
-  `caloriasDieta` float(255) DEFAULT NULL,
+  `caloriasDieta` float DEFAULT NULL,
   `observaciones` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idDieta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -115,6 +115,7 @@ CREATE TABLE `medicos` (
   `num_cedula` varchar(255) DEFAULT NULL,
   `contrasena` varchar(255) DEFAULT NULL,
   `fotografia` mediumblob,
+  `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idMedico`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -134,8 +135,8 @@ CREATE TABLE `pacientes` (
   `apellidos` varchar(255) DEFAULT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
   `genero` varchar(255) DEFAULT NULL,
-  `peso` float(255,0) DEFAULT NULL,
-  `estatura` varchar(255) DEFAULT NULL,
+  `peso` float DEFAULT NULL,
+  `estatura` int(11) DEFAULT NULL,
   `talla` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `telefono` varchar(0) DEFAULT NULL,
@@ -144,15 +145,17 @@ CREATE TABLE `pacientes` (
   `contrasena` varchar(255) DEFAULT NULL,
   `fotrografia` mediumblob,
   `idMedico` int(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idPaciente`),
   KEY `idMedico` (`idMedico`),
   CONSTRAINT `idMedico` FOREIGN KEY (`idMedico`) REFERENCES `medicos` (`idMedico`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pacientes
 -- ----------------------------
 BEGIN;
+INSERT INTO `pacientes` VALUES (1, 'Julian', 'Ramirez', '1969-11-11', 'Hombre', 78, 187, 'Mediano', 'julianramirez@live.com.mx', '', 'Xalapa', 'julian', '1234', NULL, NULL, 'Activo');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
