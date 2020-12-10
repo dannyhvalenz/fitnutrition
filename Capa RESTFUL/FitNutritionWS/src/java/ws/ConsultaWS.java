@@ -15,6 +15,7 @@ import javax.ws.rs.core.UriInfo;
 import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import pojos.Consulta;
+import pojos.Dieta;
 import pojos.Mensaje;
 
 @Path("consultas")
@@ -104,7 +105,7 @@ public class ConsultaWS {
     @Path("actualizarConsulta")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje actualizarConsulta(@FormParam("idConsulta") Integer idConsulta, @FormParam("idPaciente") Integer idPaciente, @FormParam("idDieta") Integer idDieta, @FormParam("imc") Integer imc, @FormParam("talla") String talla, @FormParam("peso") Float peso, @FormParam("observaciones") String observaciones){
+    public Mensaje actualizarConsulta(@FormParam("idConsulta") Integer idConsulta, @FormParam("idPaciente") Integer idPaciente, @FormParam("idDieta") Integer idDieta, @FormParam("imc") Integer imc, @FormParam("talla") String talla, @FormParam("peso") float peso, @FormParam("observaciones") String observaciones){
         Mensaje respuesta = new Mensaje();        
         Consulta consulta = new Consulta(idConsulta, idPaciente, idDieta, peso, imc, observaciones, talla);
         SqlSession conn = MyBatisUtil.getSession();
@@ -112,13 +113,15 @@ public class ConsultaWS {
             try {
                 int resultado = conn.update("Consulta.actualizarConsulta", consulta);
                 conn.commit();
+                respuesta.setError(false);
+                respuesta.setMensaje("Consulta actualizada con éxito... ");
                 if(resultado > 0){
                     respuesta.setError(false);
                     respuesta.setMensaje("Consulta actualizada con éxito... ");
                     conn.clearCache();
                 }else{
                     respuesta.setError(true);
-                    respuesta.setMensaje("La consulta no pudo ser actualizada ");
+                    respuesta.setMensaje("No se actualizó la consulta");
                 }                
             }catch (Exception e){
                 respuesta.setError(true);

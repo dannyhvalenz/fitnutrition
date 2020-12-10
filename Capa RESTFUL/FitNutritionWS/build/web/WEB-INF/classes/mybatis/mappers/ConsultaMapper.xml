@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         peso = #{peso},
         imc = #{imc},
         observaciones = #{observaciones},
-        talla = #{talla},
+        talla = #{talla}
         WHERE idConsulta = #{idConsulta}
     </update>
     
