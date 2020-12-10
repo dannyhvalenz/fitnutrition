@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM dietas
     </select>
     
-    <select id="getAllDietasByID" resultType="pojos.Dieta">
+    <select id="getDietaByID" resultType="pojos.Dieta">
         SELECT * FROM dietas WHERE idDieta = #{idDieta}
     </select>
     

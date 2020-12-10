@@ -5,6 +5,7 @@
  */
 package ws;
 
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -17,6 +18,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
+import pojos.Consulta;
 import pojos.Dieta;
 import pojos.Mensaje;
 
@@ -43,6 +45,40 @@ public class DietaWS {
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(String content){
     }
+    
+    @Path("getAllDietas")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Dieta> getAllDietas(){
+        List<Dieta> dietas = null;
+        SqlSession conn = MyBatisUtil.getSession();
+        
+        if(conn != null){
+            try {
+                dietas = conn.selectList("Dieta.getAllDietas");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return dietas;
+    }
+    
+    @Path("getDietaByID")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Dieta getDietaByID(@FormParam("idDieta") Integer idDieta){
+        SqlSession conn = MyBatisUtil.getSession();
+        Dieta dieta =  new Dieta();
+        if(conn != null){
+            try {
+                dieta = conn.selectOne("Dieta.getDietaByID", idDieta);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return dieta;
+    }
+    
     
     @Path("registrarDieta")
     @POST

@@ -1,7 +1,5 @@
 package ws;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
