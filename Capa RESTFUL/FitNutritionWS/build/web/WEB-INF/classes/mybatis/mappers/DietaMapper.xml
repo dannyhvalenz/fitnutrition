@@ -13,6 +13,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM dietas WHERE idDieta = #{idDieta}
     </select>
     
+    <insert id="registrarDieta" parameterType="pojos.Dieta">
+        INSERT INTO dietas (nombre, idAlimento, cantidad, horaDia, caloriasDieta, observaciones)
+        VALUES (#{nombre}, #{idAlimento}, #{cantidad}, #{horaDia}, #{caloriasDieta}, #{observaciones})
+    </insert>
+    
+    <update id="actualizarDieta" parameterType="pojos.Dieta">
+        UPDATE dietas SET 
+        nombre = #{nombre},
+        idAlimento = #{idAlimento},
+        cantidad = #{cantidad},
+        horaDia = #{horaDia},
+        caloriasDieta = #{caloriasDieta},
+        observaciones = #{observaciones}
+        WHERE idDieta = #{idDieta}
+    </update>
+    
     <delete id="eliminarDieta" parameterType="int">
         DELETE FROM dietas WHERE idDieta = #{idDieta}
     </delete>

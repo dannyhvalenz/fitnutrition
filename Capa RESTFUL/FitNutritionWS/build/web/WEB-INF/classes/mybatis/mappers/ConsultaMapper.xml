@@ -19,7 +19,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <update id="actualizarConsulta" parameterType="pojos.Consulta">
-        UPDATE consultas SET idPaciente = #{idPaciente}, idDieta = #{idDieta}, peso = #{peso}, imc = #{imc}, observaciones = #{observaciones}, talla = #{talla}
+        UPDATE consultas SET 
+        idPaciente = #{idPaciente},
+        idDieta = #{idDieta},
+        peso = #{peso},
+        imc = #{imc},
+        observaciones = #{observaciones},
+        talla = #{talla},
         WHERE idConsulta = #{idConsulta}
     </update>
     
