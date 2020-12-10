@@ -7,11 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="getMedicoByID" resultType="pojos.Medico" 
             parameterType="int">
-        SELECT idMedico,nombre, apellidos, genero, domicilio, num_personal, num_cedula, contrasena, status, fecha_nacimiento FROM medicos WHERE idMedico = #{idMedico}
+        SELECT * FROM medicos WHERE idMedico = #{idMedico}
     </select>
     
     <select id="getAllMedicos" resultType="pojos.Medico">
-        SELECT idMedico,nombre, apellidos, genero, domicilio, num_personal, num_cedula, contrasena, status, fecha_nacimiento FROM medicos
+        SELECT * FROM medicos
     </select>
     
     <insert id="registrarMedico" parameterType="pojos.Medico">

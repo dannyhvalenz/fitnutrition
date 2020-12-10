@@ -24,6 +24,8 @@
         <mapper resource="mybatis/mappers/PacienteMapper.xml"/>
         <mapper resource="mybatis/mappers/CitaMapper.xml"/>
         <mapper resource="mybatis/mappers/SesionMapper.xml"/>
+        <mapper resource="mybatis/mappers/ConsultaMapper.xml"/>
+        <mapper resource="mybatis/mappers/DietaMapper.xml"/>
     </mappers>
 </configuration>
 

@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.ws.rs.core.Context;
@@ -189,8 +188,6 @@ public class MedicoWS {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Medico> getAllMedicos(){
         List<Medico> medicos = null;
-        
-        
         SqlSession conn = MyBatisUtil.getSession();
         
         if(conn != null){
