@@ -81,6 +81,23 @@ public class DietaWS {
         return dieta;
     }
     
+    @Path("getDietaByNombre")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Dieta> getDietaByNombre(@FormParam("nombre") String nombre){
+        List<Dieta> alimentosDieta = null;
+        SqlSession conn = MyBatisUtil.getSession();
+        
+        if(conn != null){
+            try {
+                alimentosDieta = conn.selectList("Dieta.getDietaByNombre", nombre);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return alimentosDieta;
+    }
+    
     
     @Path("registrarDieta")
     @POST
