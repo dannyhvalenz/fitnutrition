@@ -11,7 +11,7 @@
  Target Server Version : 50731
  File Encoding         : 65001
 
- Date: 09/12/2020 00:13:31
+ Date: 09/12/2020 23:34:27
 */
 
 SET NAMES utf8mb4;
@@ -56,6 +56,7 @@ CREATE TABLE `citas` (
 -- Records of citas
 -- ----------------------------
 BEGIN;
+INSERT INTO `citas` VALUES (1, '2020-12-12', '10:30:00', 1, 'obs');
 COMMIT;
 
 -- ----------------------------
@@ -63,20 +64,21 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `consultas`;
 CREATE TABLE `consultas` (
-  `idConsulta` int(255) NOT NULL,
+  `idConsulta` int(255) NOT NULL AUTO_INCREMENT,
   `idPaciente` int(255) DEFAULT NULL,
   `observaciones` varchar(255) DEFAULT NULL,
-  `peso` float DEFAULT NULL,
-  `talla` float DEFAULT NULL,
-  `IMC` float DEFAULT NULL,
+  `peso` float(11,0) DEFAULT NULL,
+  `talla` varchar(11) DEFAULT NULL,
+  `IMC` float(11,0) DEFAULT NULL,
   `idDieta` int(11) DEFAULT NULL,
   PRIMARY KEY (`idConsulta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of consultas
 -- ----------------------------
 BEGIN;
+INSERT INTO `consultas` VALUES (2, 1, 'obs', 70, 'mediana', 13, 1);
 COMMIT;
 
 -- ----------------------------
@@ -86,18 +88,19 @@ DROP TABLE IF EXISTS `dietas`;
 CREATE TABLE `dietas` (
   `idDieta` int(255) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
-  `alimento` varchar(255) DEFAULT NULL,
+  `idAlimento` int(11) DEFAULT NULL,
   `cantidad` varchar(255) DEFAULT NULL,
   `horaDia` varchar(255) DEFAULT NULL,
   `caloriasDieta` float DEFAULT NULL,
   `observaciones` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idDieta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dietas
 -- ----------------------------
 BEGIN;
+INSERT INTO `dietas` VALUES (1, 'Keto', 1, '1 porcion', 'Desayuno', 1020, 'obs');
 COMMIT;
 
 -- ----------------------------
@@ -117,12 +120,13 @@ CREATE TABLE `medicos` (
   `fotografia` mediumblob,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idMedico`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of medicos
 -- ----------------------------
 BEGIN;
+INSERT INTO `medicos` VALUES (1, 'Julian', 'Navarro', '1990-10-09', 'Hombre', 'Xalapa', 'JN01', 'JN012002', '1234', NULL, 'Activo');
 COMMIT;
 
 -- ----------------------------
@@ -143,7 +147,7 @@ CREATE TABLE `pacientes` (
   `domicilio` varchar(255) DEFAULT NULL,
   `usuario` varchar(255) DEFAULT NULL,
   `contrasena` varchar(255) DEFAULT NULL,
-  `fotrografia` mediumblob,
+  `fotografia` mediumblob,
   `idMedico` int(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idPaciente`),
