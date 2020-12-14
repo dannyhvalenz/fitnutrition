@@ -12,6 +12,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="loginMedico" resultType="pojos.Medico" parameterType="map">
         SELECT * FROM medicos
-        WHERE num_personal = #{num_personal} AND contrasena = #{contrasena}
+        WHERE num_personal = #{usuario} AND contrasena = #{contrasena}
     </select>
 </mapper>
