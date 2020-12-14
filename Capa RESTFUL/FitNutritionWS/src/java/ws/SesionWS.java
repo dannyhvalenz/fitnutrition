@@ -72,7 +72,7 @@ public class SesionWS {
                 } else {
                     Medico medico =  new Medico();
                     HashMap<String,Object> paramMedico = new HashMap<>();
-                    paramMedico.put("num_personal", usuario);
+                    paramMedico.put("usuario", usuario);
                     paramMedico.put("contrasena", contrasena);
                     medico = conn.selectOne("Sesion.loginMedico", paramMedico);
                     conn.commit();
