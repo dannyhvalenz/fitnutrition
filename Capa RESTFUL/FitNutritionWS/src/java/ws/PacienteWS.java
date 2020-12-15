@@ -72,6 +72,11 @@ public class PacienteWS {
                 if(resultado > 0){
                     respuesta.setError(false);
                     respuesta.setMensaje("Paciente agregado con éxito");
+                    List<Paciente> list = null;
+                    list = conn.selectList("Paciente.getAllPacientes");
+                    int i = list.size();
+                    Paciente paci = list.get(i-1);
+                    respuesta.setMensaje("Registro agregado con Exito " + resultado + ", " + paci.getIdPaciente());
                     conn.clearCache();
                 }else{
                     respuesta.setError(true);
