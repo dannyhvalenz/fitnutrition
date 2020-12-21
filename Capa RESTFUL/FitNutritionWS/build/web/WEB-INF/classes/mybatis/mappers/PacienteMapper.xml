@@ -14,7 +14,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
     <select id="getAllPacientes" resultType="pojos.Paciente">
-        SELECT * FROM pacientes
+        SELECT 
+        idPaciente,
+        pacientes.nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        peso,
+        estatura,
+        talla,
+        email,
+        telefono,
+        domicilio,
+        usuario,
+        contrasena,
+        idMedico,
+        status
+        FROM pacientes
+    </select>
+    
+    <select id="getAllPacientesActivos" resultType="pojos.Paciente">
+        SELECT 
+        idPaciente,
+        pacientes.nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        peso,
+        estatura,
+        talla,
+        email,
+        telefono,
+        domicilio,
+        usuario,
+        contrasena,
+        idMedico,
+        status
+        FROM pacientes
+        WHERE status='Activo'
     </select>
     
     <insert id="registrarPaciente" parameterType="pojos.Paciente">
@@ -36,7 +73,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             domicilio = #{domicilio}, 
             usuario = #{usuario}, 
             contrasena = #{contrasena},
-            fecha_nacimiento = #{fecha_nacimiento}
+            fecha_nacimiento = #{fecha_nacimiento},
+            status = #{status}
         WHERE idPaciente = #{idPaciente}
     </update>
     

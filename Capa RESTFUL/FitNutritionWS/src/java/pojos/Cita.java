@@ -16,12 +16,12 @@ public class Cita {
     private int idCita, idPaciente;
     private String observaciones;
     private Date fecha;
-    private Time hora;
+    private String hora, usuario;
 
     public Cita(){
     }
     
-    public Cita(int idCita, int idPaciente, String observaciones, Date fecha, Time hora) {
+    public Cita(int idCita, int idPaciente, String observaciones, Date fecha, String hora) {
         this.idCita = idCita;
         this.idPaciente = idPaciente;
         this.observaciones = observaciones;
@@ -29,7 +29,16 @@ public class Cita {
         this.hora = hora;
     }
 
-    public Cita(int idPaciente, String observaciones, Date fecha, Time hora) {
+    public Cita(int idCita, int idPaciente, String observaciones, Date fecha, String hora, String usuario) {
+        this.idCita = idCita;
+        this.idPaciente = idPaciente;
+        this.observaciones = observaciones;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.usuario = usuario;
+    }
+    
+    public Cita(int idPaciente, String observaciones, Date fecha, String hora) {
         this.idPaciente = idPaciente;
         this.observaciones = observaciones;
         this.fecha = fecha;
@@ -68,12 +77,20 @@ public class Cita {
         this.fecha = fecha;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     
     

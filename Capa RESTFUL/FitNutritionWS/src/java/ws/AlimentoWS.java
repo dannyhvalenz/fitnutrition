@@ -61,7 +61,7 @@ public class AlimentoWS {
     @Path("registrarAlimento")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje crearAlimentoBD(@FormParam("nombre") String nombre, @FormParam("calorias_por_porcion") Integer calorias_por_porcion, @FormParam("porcion") String porcion){
+    public Mensaje crearAlimentoBD(@FormParam("nombre") String nombre, @FormParam("calorias_por_porcion") String calorias_por_porcion, @FormParam("porcion") String porcion){
         Mensaje respuesta = new Mensaje();        
         Alimento alimento = new Alimento(nombre, calorias_por_porcion, porcion);
         SqlSession conn = MyBatisUtil.getSession();
@@ -102,7 +102,7 @@ public class AlimentoWS {
     @Path("actualizarAlimento")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje editarAlimentoBD(@FormParam("idAlimento") Integer idAlimento, @FormParam("nombre") String nombre, @FormParam("calorias_por_porcion") Integer calorias_por_porcion, @FormParam("porcion") String porcion){
+    public Mensaje editarAlimentoBD(@FormParam("idAlimento") Integer idAlimento, @FormParam("nombre") String nombre, @FormParam("calorias_por_porcion") String calorias_por_porcion, @FormParam("porcion") String porcion){
         Mensaje respuesta = new Mensaje();        
         Alimento alimento = new Alimento(idAlimento,nombre, calorias_por_porcion, porcion);
         SqlSession conn = MyBatisUtil.getSession();

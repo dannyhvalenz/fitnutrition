@@ -71,6 +71,11 @@ public class MedicoWS {
                 if(resultado > 0){
                     respuesta.setError(false);
                     respuesta.setMensaje("Medico agregado con éxito");
+                    List<Medico> list = null;
+                    list = conn.selectList("Medico.getAllMedicos");
+                    int i = list.size();
+                    Medico medi = list.get(i-1);
+                    respuesta.setMensaje("Registro agregado con Exito " + resultado + ", " + medi.getIdMedico());
                     conn.clearCache();
                 }else{
                     respuesta.setError(true);
@@ -200,6 +205,23 @@ public class MedicoWS {
         return medicos;
     }
     
+    @Path("getAllMedicosActivos")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Medico> getAllMedicosActivos(){
+        List<Medico> medicos = null;
+        SqlSession conn = MyBatisUtil.getSession();
+        
+        if(conn != null){
+            try {
+                medicos = conn.selectList("Medico.getAllMedicosActivos");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return medicos;
+    }
+    
     /**
      * Recuperar informacion de un medico en especifico
      * @param idMedico
@@ -257,7 +279,7 @@ public class MedicoWS {
     public Mensaje getFotografiaMedico(@PathParam("idMedico") Integer idMedico){
         Mensaje msj = new Mensaje();
         SqlSession conn = MyBatisUtil.getSession();
-        String PATH = "/Users/dany/Desktop/NutritionFit/medicos/"+idMedico+".png";
+        String PATH = "D:\\Documentos\\UV\\7moSemestre\\Integracion_Soluciones\\Imagenes\\"+idMedico+".png";
         if(conn != null){
             try{
                 Medico medico = conn.selectOne("Medico.getFotografiaMedico", idMedico);

@@ -11,7 +11,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
     <select id="getAllMedicos" resultType="pojos.Medico">
-        SELECT * FROM medicos
+        SELECT 
+        idMedico,
+        nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        domicilio,
+        num_personal,
+        num_cedula,
+        contrasena,
+        status
+        FROM medicos
+    </select>
+    
+    <select id="getAllMedicosActivos" resultType="pojos.Medico">
+        SELECT 
+        idMedico,
+        nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        domicilio,
+        num_personal,
+        num_cedula,
+        contrasena,
+        status
+        FROM medicos
+        WHERE status='Activo'
     </select>
     
     <insert id="registrarMedico" parameterType="pojos.Medico">

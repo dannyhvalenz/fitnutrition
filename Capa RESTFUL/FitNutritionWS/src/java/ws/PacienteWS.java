@@ -57,13 +57,13 @@ public class PacienteWS {
     @Path("registrarPaciente")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje registrarPaciente(@FormParam("peso") Integer peso, @FormParam("estatura") Integer estatura, 
+    public Mensaje registrarPaciente(@FormParam("peso") Float peso, @FormParam("estatura") Integer estatura, 
             @FormParam("idMedico") Integer idMedico, @FormParam("nombre") String nombre, @FormParam("apellidos") String apellidos, 
             @FormParam("talla") String talla, @FormParam("genero") String genero, @FormParam("email") String email, 
             @FormParam("telefono") String telefono, @FormParam("domicilio") String domicilio, @FormParam("usuario") String usuario, 
-            @FormParam("contrasena") String contrasena, @FormParam("fecha_nacimiento") Date fecha_nacimiento){
+            @FormParam("contrasena") String contrasena, @FormParam("fecha_nacimiento") String fecha_nacimiento, @FormParam("status") String estatus){
         Mensaje respuesta = new Mensaje();        
-        Paciente paciente = new Paciente(peso, estatura, idMedico, nombre, apellidos, talla, genero, email, telefono, domicilio, usuario, contrasena, "Activo", fecha_nacimiento);
+        Paciente paciente = new Paciente(peso, estatura, idMedico, nombre, apellidos, talla, genero, email, telefono, domicilio, usuario, contrasena, estatus, fecha_nacimiento);
         SqlSession conn = MyBatisUtil.getSession();
         if(conn != null){
             try {
@@ -100,13 +100,13 @@ public class PacienteWS {
     @Path("actualizarPaciente")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje editarPaciente(@FormParam("idPaciente") Integer idPaciente, @FormParam("peso") Integer peso, @FormParam("estatura") Integer estatura, 
+    public Mensaje editarPaciente(@FormParam("idPaciente") Integer idPaciente, @FormParam("peso") Float peso, @FormParam("estatura") Integer estatura, 
             @FormParam("idMedico") Integer idMedico, @FormParam("nombre") String nombre, @FormParam("apellidos") String apellidos, 
             @FormParam("talla") String talla, @FormParam("genero") String genero, @FormParam("email") String email, 
             @FormParam("telefono") String telefono, @FormParam("domicilio") String domicilio, @FormParam("usuario") String usuario, 
-            @FormParam("contrasena") String contrasena, @FormParam("fecha_nacimiento") Date fecha_nacimiento){
+            @FormParam("contrasena") String contrasena, @FormParam("fecha_nacimiento") String fecha_nacimiento, @FormParam("status") String estatus){
         Mensaje respuesta = new Mensaje();        
-        Paciente paciente = new Paciente(idPaciente, peso, estatura, idMedico, nombre, apellidos, talla, genero, email, telefono, domicilio, usuario, contrasena, fecha_nacimiento);
+        Paciente paciente = new Paciente(idPaciente, peso, estatura, idMedico, nombre, apellidos, talla, genero, email, telefono, domicilio, usuario, contrasena, estatus, fecha_nacimiento);
         SqlSession conn = MyBatisUtil.getSession();
         if(conn != null){
             try {
@@ -195,6 +195,23 @@ public class PacienteWS {
         return pacientes;
     }
     
+    @Path("getAllPacientesActivos")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Paciente> getAllPacientesActivos(){
+        List<Paciente> pacientes = null;
+        SqlSession conn = MyBatisUtil.getSession();
+        
+        if(conn != null){
+            try {
+                pacientes = conn.selectList("Paciente.getAllPacientesActivos");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return pacientes;
+    }
+    
     /**
      * Recuperar informacion de un paciente en especifico
      * @param idPaciente
@@ -255,11 +272,11 @@ public class PacienteWS {
     public Mensaje getFotografiaPaciente(@PathParam("idPaciente") Integer idPaciente){
         Mensaje msj = new Mensaje();
         SqlSession conn = MyBatisUtil.getSession();
-        String PATH = "/Users/dany/Desktop/NutritionFit/pacientes/"+idPaciente+".png";
+        String PATH = "D:\\Documentos\\UV\\7moSemestre\\Integracion_Soluciones\\Imagenes\\"+idPaciente+".png";
         if(conn != null){
             try{
                 Paciente paciente = conn.selectOne("Paciente.getFotografiaPaciente", idPaciente);
-                System.out.println("Paciente: " + paciente.getNombre());
+                System.out.println("Paciente: " + paciente.getNombre() + ", Recuperando IMAGEN");
                 boolean isSave = escribeImagenPaciente(PATH, paciente.getFotografia());
                 if(isSave){
                    msj.setError(false);

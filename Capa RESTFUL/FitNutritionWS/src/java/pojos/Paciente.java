@@ -5,22 +5,22 @@
  */
 package pojos;
 
-import java.sql.Date;
+
 
 /**
  *
  * @author dany
  */
 public class Paciente {
-    private int idPaciente, peso, estatura,idMedico;
-    private String nombre, apellidos, talla, genero, email, telefono, domicilio, usuario, contrasena, status;
-    private Date fecha_nacimiento;
+    private int idPaciente, estatura,idMedico;
+    private float peso;
+    private String nombre, apellidos, talla, genero, email, telefono, domicilio, usuario, contrasena, status, fecha_nacimiento;
     private byte[] fotografia;
 
     public Paciente() {
     }
 
-    public Paciente(int peso, int estatura, int idMedico, String nombre, String apellidos, String talla, String genero, String email, String telefono, String domicilio, String usuario, String contrasena, String status, Date fecha_nacimiento) {
+    public Paciente(float peso, int estatura, int idMedico, String nombre, String apellidos, String talla, String genero, String email, String telefono, String domicilio, String usuario, String contrasena, String status, String fecha_nacimiento) {
         this.peso = peso;
         this.estatura = estatura;
         this.idMedico = idMedico;
@@ -37,7 +37,7 @@ public class Paciente {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public Paciente(int idPaciente, int peso, int estatura, int idMedico, String nombre, String apellidos, String talla, String genero, String email, String telefono, String domicilio, String usuario, String contrasena, String status, Date fecha_nacimiento, byte[] fotografia) {
+    public Paciente(int idPaciente, float peso, int estatura, int idMedico, String nombre, String apellidos, String talla, String genero, String email, String telefono, String domicilio, String usuario, String contrasena, String status, String fecha_nacimiento, byte[] fotografia) {
         this.idPaciente = idPaciente;
         this.peso = peso;
         this.estatura = estatura;
@@ -56,7 +56,7 @@ public class Paciente {
         this.fotografia = fotografia;
     }
 
-    public Paciente(int idPaciente, int peso, int estatura, int idMedico, String nombre, String apellidos, String talla, String genero, String email, String telefono, String domicilio, String usuario, String contrasena, Date fecha_nacimiento) {
+    public Paciente(int idPaciente, float peso, int estatura, int idMedico, String nombre, String apellidos, String talla, String genero, String email, String telefono, String domicilio, String usuario, String contrasena, String estatus, String fecha_nacimiento) {
         this.idPaciente = idPaciente;
         this.peso = peso;
         this.estatura = estatura;
@@ -70,8 +70,8 @@ public class Paciente {
         this.domicilio = domicilio;
         this.usuario = usuario;
         this.contrasena = contrasena;
+        this.status = estatus;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.fotografia = fotografia;
     }
     
     
@@ -91,11 +91,11 @@ public class Paciente {
         this.idPaciente = idPaciente;
     }
 
-    public int getPeso() {
+    public float getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(float peso) {
         this.peso = peso;
     }
 
@@ -187,11 +187,11 @@ public class Paciente {
         this.contrasena = contrasena;
     }
 
-    public Date getFecha_nacimiento() {
+    public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
@@ -210,7 +210,11 @@ public class Paciente {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
+    @Override
+    public String toString() {
+        return usuario;
+    }
     
     
 }

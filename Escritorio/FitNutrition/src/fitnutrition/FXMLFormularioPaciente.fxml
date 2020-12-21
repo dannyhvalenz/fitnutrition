@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="614.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitnutrition.FXMLFormularioPacienteController">
+    <children>
+      <Label fx:id="lbTitulo" layoutX="14.0" layoutY="14.0" text="Agregar Paciente">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="180.0" text="Nombre" />
+      <TextField fx:id="tfNombre" layoutX="192.0" layoutY="180.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="66.0" layoutY="210.0" text="Apellidos" />
+      <TextField fx:id="tfApellidos" layoutX="192.0" layoutY="210.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="50.0" layoutY="245.0" text="Fecha de nacimiento" />
+      <DatePicker fx:id="dpFecha" layoutX="192.0" layoutY="240.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="68.0" layoutY="275.0" text="Genero" />
+      <ComboBox fx:id="cbGenero" layoutX="192.0" layoutY="270.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="68.0" layoutY="305.0" text="Peso" />
+      <TextField fx:id="tfPeso" layoutX="192.0" layoutY="300.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="68.0" layoutY="335.0" text="Estatura" />
+      <TextField fx:id="tfEstatura" layoutX="192.0" layoutY="330.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="68.0" layoutY="365.0" text="Talla" />
+      <TextField fx:id="tfTalla" layoutX="192.0" layoutY="360.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="50.0" layoutY="395.0" text="Correo electronico" />
+      <TextField fx:id="tfEmail" layoutX="192.0" layoutY="390.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="68.0" layoutY="425.0" text="Telefono" />
+      <TextField fx:id="tfTelefono" layoutX="192.0" layoutY="420.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="68.0" layoutY="455.0" text="Domicilio" />
+      <TextField fx:id="tfDomicilio" layoutX="192.0" layoutY="450.0" prefHeight="25.0" prefWidth="217.0" />
+      <Label layoutX="68.0" layoutY="485.0" text="Usuario" />
+      <TextField fx:id="tfUsuario" layoutX="192.0" layoutY="480.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="68.0" layoutY="515.0" text="Contraseña" />
+      <PasswordField fx:id="pfContrasena" layoutX="193.0" layoutY="511.0" prefHeight="25.0" prefWidth="217.0" /> 
+      <Label layoutX="45.0" layoutY="545.0" text="Medico que lo atiende" />
+      <ComboBox fx:id="cbMedico" layoutX="192.0" layoutY="540.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Label layoutX="68.0" layoutY="575.0" text="Estatus" />
+      <ComboBox fx:id="cbEstatus" layoutX="192.0" layoutY="570.0" prefHeight="25.0" prefWidth="217.0" />      
+      <Button layoutX="460.0" layoutY="570.0" mnemonicParsing="false" onAction="#clicEnviar" text="Guardar" />
+      <Button layoutX="451.0" layoutY="113.0" mnemonicParsing="false" onAction="#clicSeleccionar" text="Seleccionar" />
+      <Label layoutX="445.0" layoutY="81.0" text="Imagen paciente" />
+      <ImageView fx:id="ivPaciente" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />           
+   </children>
+</AnchorPane>

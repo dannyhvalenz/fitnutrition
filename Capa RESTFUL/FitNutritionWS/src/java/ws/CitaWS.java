@@ -56,7 +56,7 @@ public class CitaWS {
     @Path("registrarCita")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje crearCita(@FormParam("fecha") Date fecha, @FormParam("hora") Time hora, @FormParam("idPaciente") Integer idPaciente, @FormParam("observaciones") String observaciones){
+    public Mensaje crearCita(@FormParam("fecha") Date fecha, @FormParam("hora") String hora, @FormParam("idPaciente") Integer idPaciente, @FormParam("observaciones") String observaciones){
         Mensaje respuesta = new Mensaje();        
         Cita cita = new Cita(idPaciente, observaciones, fecha, hora);
         SqlSession conn = MyBatisUtil.getSession();
@@ -88,7 +88,7 @@ public class CitaWS {
     @Path("actualizarCita")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje actualizarCita(@FormParam("idCita") Integer idCita, @FormParam("fecha") Date fecha, @FormParam("hora") Time hora, @FormParam("idPaciente") Integer idPaciente, @FormParam("observaciones") String observaciones){
+    public Mensaje actualizarCita(@FormParam("idCita") Integer idCita, @FormParam("fecha") Date fecha, @FormParam("hora") String hora, @FormParam("idPaciente") Integer idPaciente, @FormParam("observaciones") String observaciones){
         Mensaje respuesta = new Mensaje();        
         Cita cita = new Cita(idCita, idPaciente, observaciones, fecha, hora);
         SqlSession conn = MyBatisUtil.getSession();

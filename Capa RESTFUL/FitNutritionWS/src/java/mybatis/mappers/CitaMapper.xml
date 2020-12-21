@@ -10,7 +10,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
     <select id="getAllCitas" resultType="pojos.Cita">
-        SELECT * FROM citas
+        SELECT 
+        idCita,
+        fecha,
+        hora,
+        citas.idPaciente,
+        observaciones,
+        pacientes.usuario as usuario        
+        FROM citas 
+        INNER JOIN pacientes ON citas.idPaciente = pacientes.idPaciente
     </select>
     
     <insert id="registrarCita" parameterType="pojos.Cita">
