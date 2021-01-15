@@ -6,7 +6,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Consulta">
     
     <select id="getAllConsultas" resultType="pojos.Consulta">
-        SELECT * FROM consultas
+        SELECT
+        idConsulta,
+        consultas.idPaciente,
+        pacientes.usuario,
+        consultas.observaciones,
+        consultas.peso,
+        consultas.talla,
+        IMC,
+        consultas.idDieta,
+        dietas.nombre
+        FROM consultas 
+        INNER JOIN pacientes ON consultas.idPaciente = pacientes.idPaciente 
+        INNER JOIN dietas ON consultas.idDieta = dietas.idDieta
     </select>
     
     <select id="getConsultaByID" resultType="pojos.Consulta">

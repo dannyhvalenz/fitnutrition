@@ -37,5 +37,7 @@
       <Label layoutX="11.0" layoutY="62.0" text="Buscar por" />
       <Button layoutX="679.0" layoutY="58.0" mnemonicParsing="false" onAction="#clicCitas" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #1290b4;" text="Citas" textFill="WHITE" />
       <Button layoutX="340.0" layoutY="25.0" mnemonicParsing="false" onAction="#clicAlimentos" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #e08800;" text="Alimentos" textFill="WHITE" />
+      <Button layoutX="567.0" layoutY="25.0" mnemonicParsing="false" onAction="#clicConsultas" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #008bbf;" text="Consultas" textFill="WHITE" />
+      <Button layoutX="453.0" layoutY="25.0" mnemonicParsing="false" onAction="#clicDietas" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #c58300;" text="Dietas" textFill="WHITE" />
    </children>
 </AnchorPane>

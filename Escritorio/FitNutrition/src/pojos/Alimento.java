@@ -53,4 +53,8 @@ public class Alimento {
         this.porcion = porcion;
     }
     
+    @Override
+    public String toString() {
+        return nombre + " - " + calorias_por_porcion + "c";
+    }
 }

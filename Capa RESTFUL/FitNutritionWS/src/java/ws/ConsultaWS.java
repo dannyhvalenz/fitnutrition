@@ -73,9 +73,16 @@ public class ConsultaWS {
     @Path("registrarConsulta")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje registrarConsulta(@FormParam("idPaciente") Integer idPaciente, @FormParam("idDieta") Integer idDieta, @FormParam("imc") Integer imc, @FormParam("talla") String talla, @FormParam("peso") float peso, @FormParam("observaciones") String observaciones){
+    public Mensaje registrarConsulta(@FormParam("idPaciente") Integer idPaciente, @FormParam("idDieta") Integer idDieta, @FormParam("IMC") float imc, @FormParam("talla") String talla, @FormParam("peso") float peso, @FormParam("observaciones") String observaciones){
         Mensaje respuesta = new Mensaje();        
-        Consulta consulta = new Consulta(idPaciente, idDieta, peso, imc, observaciones, talla);
+        //System.out.println("idPaciente: " + idPaciente);
+        //System.out.println("idDieta: " + idDieta);
+        //System.out.println("IMC: " + imc);
+        //System.out.println("Talla: " + talla);
+        //System.out.println("Observaciones: " + observaciones);
+        //System.out.println("Peso: " + peso);
+        Consulta consulta = new Consulta(idPaciente, observaciones, peso, talla, imc, idDieta);
+        
         SqlSession conn = MyBatisUtil.getSession();
         if(conn != null){
             try {
@@ -105,7 +112,7 @@ public class ConsultaWS {
     @Path("actualizarConsulta")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje actualizarConsulta(@FormParam("idConsulta") Integer idConsulta, @FormParam("idPaciente") Integer idPaciente, @FormParam("idDieta") Integer idDieta, @FormParam("imc") Integer imc, @FormParam("talla") String talla, @FormParam("peso") float peso, @FormParam("observaciones") String observaciones){
+    public Mensaje actualizarConsulta(@FormParam("idConsulta") Integer idConsulta, @FormParam("idPaciente") Integer idPaciente, @FormParam("idDieta") Integer idDieta, @FormParam("IMC") float imc, @FormParam("talla") String talla, @FormParam("peso") float peso, @FormParam("observaciones") String observaciones){
         Mensaje respuesta = new Mensaje();        
         Consulta consulta = new Consulta(idConsulta, idPaciente, idDieta, peso, imc, observaciones, talla);
         SqlSession conn = MyBatisUtil.getSession();

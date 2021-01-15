@@ -20,14 +20,7 @@ public class Consulta {
         this.nombre = nombre;
     }
     
-    public Consulta(int idPaciente, String observaciones, float peso, String talla, float imc, int idDieta){
-        this.idPaciente = idPaciente;
-        this.idDieta = idDieta;
-        this.peso = peso;
-        this.imc = imc;
-        this.observaciones = observaciones;
-        this.talla = talla;
-    }
+    
 
     public Consulta(int idConsulta, int idPaciente, int idDieta, float peso, float imc, String observaciones, String talla) {
         this.idConsulta = idConsulta;

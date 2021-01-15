@@ -6,7 +6,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Dieta">
     
     <select id="getAllDietas" resultType="pojos.Dieta">
-        SELECT * FROM dietas
+        SELECT
+        idDieta,
+        dietas.nombre,
+        dietas.idAlimento,
+        alimentos.nombre as nombreAlimento,
+        cantidad,
+        horaDia,
+        caloriasDieta,
+        observaciones
+        FROM dietas 
+        INNER JOIN alimentos ON dietas.idAlimento = alimentos.idAlimento
     </select>
     
     <select id="getDietaByID" resultType="pojos.Dieta">

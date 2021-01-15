@@ -267,6 +267,20 @@ public class FXMLPrincipalMedicoController implements Initializable, NotificaCam
         }
     }    
     
+    @FXML
+    private void clicConsultas(ActionEvent event) {
+        try{
+            Stage stage = (Stage) tfBuscar.getScene().getWindow();
+            Scene sceneConsultas = new Scene(FXMLLoader.load(getClass().getResource("FXMLConsultas.fxml")));
+            stage.setScene(sceneConsultas);
+            //stage.initModality(Modality.APPLICATION_MODAL);
+            //stage.showAndWait();
+            stage.show();
+        }catch(IOException ex){
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
+    
     private void muestraDialogError(String titulo, String mensaje){
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         alertError.setTitle(titulo);
@@ -299,5 +313,19 @@ public class FXMLPrincipalMedicoController implements Initializable, NotificaCam
         }catch(IOException ex){
             Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }  
+    
+    @FXML
+    private void clicDietas(ActionEvent event) {
+        try{
+            Stage stage = (Stage) tfBuscar.getScene().getWindow();
+            Scene sceneDietas = new Scene(FXMLLoader.load(getClass().getResource("FXMLDietas.fxml")));
+            stage.setScene(sceneDietas);
+            //stage.initModality(Modality.APPLICATION_MODAL);
+            //stage.showAndWait();
+            stage.show();
+        }catch(IOException ex){
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
 }
