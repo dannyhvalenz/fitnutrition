@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Paciente">
+    
+    <select id="getPacienteByID" resultType="pojos.Paciente" 
+            parameterType="int">
+        SELECT
+        idPaciente,
+        pacientes.nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        peso,
+        estatura,
+        talla,
+        email,
+        telefono,
+        domicilio,
+        usuario,
+        contrasena,
+        idMedico,
+        status
+        FROM pacientes
+        WHERE idPaciente = #{idPaciente}
+    </select>
+    
+    <select id="getAllPacientes" resultType="pojos.Paciente">
+        SELECT 
+        idPaciente,
+        pacientes.nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        peso,
+        estatura,
+        talla,
+        email,
+        telefono,
+        domicilio,
+        usuario,
+        contrasena,
+        idMedico,
+        status
+        FROM pacientes
+    </select>
+    
+    <select id="getAllPacientesActivos" resultType="pojos.Paciente">
+        SELECT 
+        idPaciente,
+        pacientes.nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        peso,
+        estatura,
+        talla,
+        email,
+        telefono,
+        domicilio,
+        usuario,
+        contrasena,
+        idMedico,
+        status
+        FROM pacientes
+        WHERE status='Activo'
+    </select>
+    
+    <insert id="registrarPaciente" parameterType="pojos.Paciente">
+        INSERT INTO pacientes (peso, estatura, idMedico, nombre, apellidos, talla, genero, email, telefono, domicilio, usuario, contrasena, status, fecha_nacimiento)
+        VALUES (#{peso}, #{estatura}, #{idMedico}, #{nombre}, #{apellidos}, #{talla}, #{genero}, #{email}, #{telefono}, #{domicilio}, #{usuario}, #{contrasena}, #{status}, #{fecha_nacimiento})
+    </insert>
+    
+    <update id="actualizarPaciente" parameterType="pojos.Paciente">
+        UPDATE pacientes SET 
+            peso = #{peso}, 
+            estatura = #{estatura}, 
+            idMedico = #{idMedico},
+            nombre = #{nombre},
+            apellidos = #{apellidos},
+            talla = #{talla}, 
+            genero = #{genero}, 
+            email = #{email}, 
+            telefono = #{telefono}, 
+            domicilio = #{domicilio}, 
+            usuario = #{usuario}, 
+            contrasena = #{contrasena},
+            fecha_nacimiento = #{fecha_nacimiento},
+            status = #{status}
+        WHERE idPaciente = #{idPaciente}
+    </update>
+    
+    <update id="eliminarPaciente" parameterType="pojos.Paciente">
+        UPDATE pacientes SET status = #{status} WHERE idPaciente = #{idPaciente}
+    </update>
+    
+    <update id="enviarFotografiaPaciente" parameterType="pojos.Paciente">
+        UPDATE pacientes SET fotografia = #{fotografia}
+        WHERE idPaciente = #{idPaciente}
+    </update>
+    
+    <select id="getFotografiaPaciente" resultType="pojos.Paciente" parameterType="int">
+        SELECT
+        idPaciente,
+        nombre,
+        fotografia
+        FROM pacientes
+        WHERE idPaciente = #{idPaciente}
+    </select>
+</mapper>

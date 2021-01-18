@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Dieta">
+    
+    <select id="getAllDietas" resultType="pojos.Dieta">
+        SELECT
+        idDieta,
+        dietas.nombre,
+        dietas.idAlimento,
+        alimentos.nombre as nombreAlimento,
+        cantidad,
+        horaDia,
+        caloriasDieta,
+        observaciones
+        FROM dietas 
+        INNER JOIN alimentos ON dietas.idAlimento = alimentos.idAlimento
+    </select>
+    
+    <select id="getDietaByID" resultType="pojos.Dieta">
+        SELECT * FROM dietas WHERE idDieta = #{idDieta}
+    </select>
+    
+    <select id="getDietaByNombre" parameterType="String" resultType="pojos.Dieta">
+        SELECT * FROM dietas WHERE nombre = #{nombre}
+    </select>
+    
+    <select id="getGrupoDietaByNombre" resultType="pojos.Dieta">
+        SELECT nombre FROM dietas
+        GROUP BY nombre
+    </select>
+    
+    <insert id="registrarDieta" parameterType="pojos.Dieta">
+        INSERT INTO dietas (nombre, idAlimento, cantidad, horaDia, caloriasDieta, observaciones)
+        VALUES (#{nombre}, #{idAlimento}, #{cantidad}, #{horaDia}, #{caloriasDieta}, #{observaciones})
+    </insert>
+    
+    <update id="actualizarDieta" parameterType="pojos.Dieta">
+        UPDATE dietas SET 
+        nombre = #{nombre},
+        idAlimento = #{idAlimento},
+        cantidad = #{cantidad},
+        horaDia = #{horaDia},
+        caloriasDieta = #{caloriasDieta},
+        observaciones = #{observaciones}
+        WHERE idDieta = #{idDieta}
+    </update>
+    
+    <delete id="eliminarDieta" parameterType="int">
+        DELETE FROM dietas WHERE idDieta = #{idDieta}
+    </delete>
+    
+</mapper>

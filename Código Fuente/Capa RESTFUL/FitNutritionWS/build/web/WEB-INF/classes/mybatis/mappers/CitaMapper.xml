@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Cita">
+    <select id="getCitaByID" resultType="pojos.Cita" 
+            parameterType="int">
+        SELECT * FROM citas WHERE idCita = #{idCita}
+    </select>
+    
+    <select id="getAllCitas" resultType="pojos.Cita">
+        SELECT 
+        idCita,
+        fecha,
+        hora,
+        citas.idPaciente,
+        observaciones,
+        pacientes.usuario as usuario        
+        FROM citas 
+        INNER JOIN pacientes ON citas.idPaciente = pacientes.idPaciente
+    </select>
+    
+    <insert id="registrarCita" parameterType="pojos.Cita">
+        INSERT INTO citas (fecha, hora, idPaciente, observaciones)
+        VALUES (#{fecha}, #{hora}, #{idPaciente}, #{observaciones})
+    </insert>
+    
+    <update id="actualizarCita" parameterType="pojos.Cita">
+        UPDATE citas SET fecha = #{fecha}, hora = #{hora}, idPaciente = #{idPaciente}, observaciones = #{observaciones}
+        WHERE idCita = #{idCita}
+    </update>
+    
+    <delete id="eliminarCita" parameterType="int">
+        DELETE FROM citas WHERE idCita = #{idCita}
+    </delete>
+    
+</mapper>

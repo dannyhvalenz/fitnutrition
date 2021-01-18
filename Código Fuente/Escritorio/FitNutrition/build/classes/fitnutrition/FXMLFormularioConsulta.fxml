@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fitnutrition.FXMLFormularioConsultaController">
+    <children>
+      <Label fx:id="lbTitulo" layoutX="14.0" layoutY="14.0" text="Agregar consulta">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>      
+      <Label layoutX="40.0" layoutY="60.0" text="Paciente(usuario)" />
+      <ComboBox fx:id="cbPaciente" layoutX="173.0" layoutY="58.0" prefHeight="25.0" prefWidth="199.0" />      
+      <Label layoutX="47.0" layoutY="100.0" text="Observaciones" />
+      <TextArea fx:id="taObservaciones" layoutX="173.0" layoutY="96.0" prefHeight="70.0" prefWidth="199.0" />
+      <Label layoutX="70.0" layoutY="182.0" text="Peso" />
+      <TextField fx:id="tfPeso" layoutX="173.0" layoutY="180.0" onKeyReleased="#calcularIMC1" prefHeight="25.0" prefWidth="199.0" promptText="00.00 kg" />
+      <Label layoutX="71.0" layoutY="217.0" text="Talla" />
+      <TextField fx:id="tfTalla" layoutX="174.0" layoutY="216.0" prefHeight="25.0" prefWidth="199.0" promptText="Chica, Mediana, Grande" />
+      <Label layoutX="23.0" layoutY="250.0" text="Indice de masa corporal" />
+      <TextField fx:id="tfIMC" editable="false" layoutX="174.0" layoutY="251.0" prefHeight="25.0" prefWidth="199.0" />
+      <Label layoutX="69.0" layoutY="287.0" text="Dieta" />
+      <ComboBox fx:id="cbDieta" layoutX="174.0" layoutY="285.0" prefHeight="25.0" prefWidth="199.0" />
+      <Button layoutX="195.0" layoutY="340.0" mnemonicParsing="false" onAction="#clicEnviar" text="Guardar" />
+   </children>
+</AnchorPane>

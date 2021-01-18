@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Medico">
+    
+    <select id="getMedicoByID" resultType="pojos.Medico" 
+            parameterType="int">
+        SELECT 
+        idMedico,
+        nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        domicilio,
+        num_personal,
+        num_cedula,
+        contrasena,
+        status
+        FROM medicos WHERE idMedico = #{idMedico}
+    </select>
+    
+    <select id="getAllMedicos" resultType="pojos.Medico">
+        SELECT 
+        idMedico,
+        nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        domicilio,
+        num_personal,
+        num_cedula,
+        contrasena,
+        status
+        FROM medicos
+    </select>
+    
+    <select id="getAllMedicosActivos" resultType="pojos.Medico">
+        SELECT 
+        idMedico,
+        nombre,
+        apellidos,
+        fecha_nacimiento,
+        genero,
+        domicilio,
+        num_personal,
+        num_cedula,
+        contrasena,
+        status
+        FROM medicos
+        WHERE status='Activo'
+    </select>
+    
+    <insert id="registrarMedico" parameterType="pojos.Medico">
+        INSERT INTO medicos (nombre, apellidos, genero, domicilio, num_personal, num_cedula, contrasena, status, fecha_nacimiento)
+        VALUES (#{nombre}, #{apellidos}, #{genero}, #{domicilio}, #{num_personal}, #{num_cedula}, #{contrasena}, #{status}, #{fecha_nacimiento})
+    </insert>
+    
+    <update id="actualizarMedico" parameterType="pojos.Medico">
+        UPDATE medicos SET 
+        nombre = #{nombre},
+        apellidos = #{apellidos},
+        genero = #{genero},
+        domicilio = #{domicilio},
+        num_personal = #{num_personal},
+        num_cedula = #{num_cedula},
+        contrasena = #{contrasena},
+        fecha_nacimiento = #{fecha_nacimiento}
+        WHERE idMedico = #{idMedico}
+    </update>
+    
+    <update id="eliminarMedico" parameterType="pojos.Medico">
+        UPDATE medicos SET status = #{status} WHERE idMedico = #{idMedico}
+    </update>
+    
+    <update id="enviarFotografiaMedico" parameterType="pojos.Medico">
+        UPDATE medicos SET fotografia = #{fotografia}
+        WHERE idMedico = #{idMedico}
+    </update>
+    
+    <select id="getFotografiaMedico" resultType="pojos.Medico" parameterType="int">
+        SELECT
+        idMedico, 
+        nombre,
+        fotografia
+        FROM medicos
+        WHERE idMedico = #{idMedico}
+    </select>
+</mapper>

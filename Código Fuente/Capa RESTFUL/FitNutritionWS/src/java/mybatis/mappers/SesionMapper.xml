@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Sesion">
+    
+    <select id="loginPaciente" resultType="pojos.Paciente" parameterType="map">
+        SELECT * FROM pacientes
+        WHERE usuario = #{usuario} AND contrasena = #{contrasena}
+    </select>
+    
+    <select id="loginMedico" resultType="pojos.Medico" parameterType="map">
+        SELECT * FROM medicos
+        WHERE num_personal = #{usuario} AND contrasena = #{contrasena}
+    </select>
+</mapper>

@@ -1,11 +1,26 @@
 # FitNutrition
 Proyecto de  Integracion de Soluciones
 
+## Instalación app de escritorio
+
+1. Instala la Base de Datos en tu aplicación de MySQL
+2. Abre el programa de la capa RESTful desde Netbeans
+3. Asegurate que el nombre de la base de datos, usuario y contrasena de mysql sean los mismos que en tu computadora
+4. Ejecuta la capa de servicios
+5. Abre el sistema de escritorio desde Netbeans
+6. Asegurate que en el archivo Constantes.java el numero del puerto sea el mismo que el link que se abrió en tu navegador al correr la capa de servicios
+7. Haz un Clean and Build
+8. Corre el sistema de escritorio
+
+## Instalación app de Android
+
+
+
 ## Base de Datos
 
-Link para el [SQL]()
+## Funcionalidades
 
-## Capa de Servicios
+### Capa de Servicios
 
 **Médicos**
 
@@ -55,63 +70,54 @@ Link para el [SQL]()
 - [x] Consultar
 - [x] Listar
 
-
-
-## Aplicación de Escritorio
+### Aplicación de Escritorio
 
 - [x] Iniciar Sesión
 
 **Médicos**
 
-- [x] Alta
-- [x] Baja (estatus)
-- [x] Cambios
-- [x] Consultar
-- [x] Listar
+- [x] Registrar médico
+- [x] Baja de un médico (cambio de estatus)
+- [x] Modificar médico
+- [x] Buscar médico
 
 **Pacientes**
 
-- [x] Alta
-- [x] Baja (estatus)
-- [x] Cambios
-- [x] Consultar
-- [x] Listar
+- [x] Crear paciente
+- [x] Baja de un paciente (cambio de estatus)
+- [x] Modificar paciente
+- [x] Buscar paciente
 
 **Dietas**
 
-- [ ] Alta
-- [ ] Baja (estatus)
-- [ ] Cambios
-- [ ] Consultar
-- [ ] Listar
+- [x] Crear dieta
+- [ ] Asignar dieta
+- [x] Modificar dieta
+- [x] Eliminar dieta
 
 **Alimentos**
 
-- [x] Alta
-- [x] Baja (estatus)
-- [x] Cambios
-- [x] Consultar
-- [x] Listar
+- [x] Crear alimento
+- [x] Modificar alimento
+- [x] Buscar alimento
 
 **Consultas**
 
-- [ ] Alta
-- [ ] Baja (estatus)
-- [ ] Cambios
-- [ ] Consultar
-- [ ] Listar
+- [x] Alta
+- [x] Cancelar consulta
+- [x] Cambios
+- [x] Búsqueda
 
 **Citas**
 
-- [ ] Alta
-- [ ] Baja (estatus)
-- [ ] Cambios
-- [ ] Consultar
-- [ ] Listar
+- [x] Crear cita
+- [x] Cancelar cita
+- [x] Cambios
+- [x] Búsqueda
 
-## Aplicación Móvil
+### Aplicación Móvil
 
-- [ ] Iniciar Sesión
+- [x] Iniciar Sesión
 
 **Pacientes**
 
@@ -131,7 +137,7 @@ Link para el [SQL]()
 
 **Citas**
 
-- [ ] Ver lista de citas
-- [ ] Ver información de la cita
-- [ ] Buscar cita por fecha
-- [ ] Cancelar cita (debe ser con al menos un día de anticipación)
+- [x] Ver lista de citas
+- [x] Ver información de la cita
+- [x] Buscar cita por fecha
+- [x] Cancelar cita (debe ser con al menos un día de anticipación)
